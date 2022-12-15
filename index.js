@@ -40,9 +40,11 @@ function operate() {
 
 function updateDisplay(num) {
     if (reset){currentDisplay.innerHTML = ""};
-    if (num == "." && /\./.test(currentDisplay.innerHTML)) { 
-        return;
+    if (num == "0" && (currentDisplay.innerHTML == '0')){
+        return
     }
+    if (num === '.' && currentDisplay.innerHTML.includes('.')) return;
+   
     currentDisplay.innerHTML += num;
     reset = false; 
 }
@@ -79,7 +81,7 @@ function completeCalc() {
 
 btnNumber.forEach ((number) => {
     number.addEventListener('click' , function() {
-        updateDisplay(parseFloat(number.value));
+        updateDisplay(/* parseFloat */(number.value));
     });
 });
 
